@@ -20,7 +20,7 @@ export default {
         
         this.atualizarMemoria(0, 0);
         
-        // Renderização inicial corrigida
+        // Renderização inicial
         imprimirMatriz(this.ambiente, [{
             x: this.x,
             y: this.y,

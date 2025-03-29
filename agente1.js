@@ -18,7 +18,7 @@ let execucoes = 0; // Contador de execuções
 let pontuacoes = []; // Armazena as pontuações de cada execução
 
 // ==============================================
-// FUNÇÃO ORIGINAL (mantida sem alterações)
+// FUNÇÃO ORIGINAL
 // ==============================================
 export function renderizarAgente(x, y) {
     const celula = document.querySelector(`.cell[data-x="${x}"][data-y="${y}"]`);
@@ -29,7 +29,7 @@ export function renderizarAgente(x, y) {
 }
 
 // ==============================================
-// FUNÇÃO ORIGINAL (mantida sem alterações)
+// FUNÇÃO ORIGINAL
 // ==============================================
 function atirarNoMonstro() {
     if (!agente.balaDisponivel) return;
@@ -58,7 +58,7 @@ function atirarNoMonstro() {
 }
 
 // ==============================================
-// FUNÇÃO MODIFICADA (ajuste mínimo para compatibilidade)
+// FUNÇÃO para compatibilidade
 // ==============================================
 export function iniciarJogo(ambiente) {
     if (execucoes >= 3) {
@@ -79,7 +79,7 @@ export function iniciarJogo(ambiente) {
     agente.balaDisponivel = true;
     
     // ==============================================
-    // ALTERAÇÃO CRÍTICA (mantém a matriz visível)
+    //(mantém a matriz visível)
     // ==============================================
     imprimirMatriz(agente.ambiente, [{
         x: agente.x,
@@ -96,7 +96,7 @@ export function iniciarJogo(ambiente) {
 }
 
 // ==============================================
-// FUNÇÃO MODIFICADA (ajuste mínimo para compatibilidade)
+// Para compatibilidade
 // ==============================================
 function moverAleatorio() {
     if (!agente.movimento || agente.pausado || !agente.jogoAtivo) {
@@ -170,7 +170,7 @@ function moverAleatorio() {
     atualizarPontuacao();
     
     // ==============================================
-    // ALTERAÇÃO CRÍTICA (mantém a matriz visível durante movimento)
+    // (mantém a matriz visível durante movimento)
     // ==============================================
     imprimirMatriz(agente.ambiente, [{
         x: agente.x,
@@ -182,7 +182,7 @@ function moverAleatorio() {
 }
 
 // ==============================================
-// FUNÇÕES ORIGINAIS (mantidas sem alterações - 200+ linhas)
+// Iniciar Movimento
 // ==============================================
 function iniciarMovimentoAleatorio() {
     if (!agente.movimento || agente.pausado) return;
