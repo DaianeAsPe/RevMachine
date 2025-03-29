@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo do Agente Hacker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <h1>Jogo do Agente Hacker</h1>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="versaoAgente">Versão do agente:</label>
+                <select id="versaoAgente">
+                    <option value="1">Agente Versão 1 (Agente Aleatório)</option>
+                    <option value="2">Agente Versão 2 (Agente Reativo)</option>
+                    <option value="3">Agente Versão 3 (Algoritmo Genético)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="tamanho">Tamanho da Matriz (NxN):</label>
+                <input type="number" id="tamanho" value="4" min="4" max="20">
+            </div>
+
+            <div class="buttons">
+                <button id="gerarAmbiente">Iniciar Jogo</button>
+                <button id="parar">Parar</button>
+            </div>
+        </div>
+
+        <div class="game-area" id="gameArea">
+            <div class="left-panel">
+                <div class="matriz-container" id="matrizContainer">
+                    <div id="matriz" class="matriz"></div>
+                    <div id="pontuacao">Pontuação: 0</div>
+                    <button id="toggle-agente-info" class="toggle-button">Mostrar/Ocultar Detalhes do Agente</button>
+                </div>
+
+                <div id="tabela-pontuacoes" class="score-table">
+                    <h2>Histórico de Pontuações</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Execução</th>
+                                    <th>Pontuação</th>
+                                </tr>
+                            </thead>
+                            <tbody id="corpo-tabela"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div id="agente-info" class="agent-info">
+                    <h3>Caminho do Melhor Agente da Versão 3</h3>
+                    <div id="agente-table-container" class="agent-table-container"></div>
+                    <div id="evolucao-container" class="evolution-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="action-log">
+            <h3>Registro de Ações durante Execução</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tempo</th>
+                            <th>Execução</th>
+                            <th>Ação</th>
+                            <th>Detalhes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="action-log-body">
+                        <!-- As ações serão adicionadas aqui dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Área para tabelas quando movidas para baixo da matriz -->
+        <div id="tabelas-abaixo" class="tabelas-ajustadas" style="display: none;">
+            <!-- As tabelas serão movidas para cá via JavaScript -->
+        </div>
+    </div>
+
+    <script type="module" src="gerencia.js"></script>
+</body>
+</html>
