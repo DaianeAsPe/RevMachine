@@ -31,12 +31,24 @@
             </div>
         </div>
 
+        <div class="intro-screen">
+            <h1>MISSÃO: DESATIVAÇÃO DE TEXMACHINE</h1>
+            <div class="terminal-effect">
+                <p>>_ Sistema de segurança da RevMachine Corporation comprometido</p>
+                <p>>_ Unidades robóticas em estado de rebelião</p>
+                <p>>_ TexMachine ativado como unidade de guarda</p>
+                <p>>_ Prêmio de $30.000.000 disponível para desativação</p>
+                <p>>_ Seu notebook pode captar o sinal de TexMachine</p>
+                <p>>_ Aproveite a única chance de hackear o sistema</p>
+            </div>
+        </div>
+
         <div class="game-area" id="gameArea">
             <div class="left-panel">
                 <div class="matriz-container" id="matrizContainer">
                     <div id="matriz" class="matriz"></div>
                     <div id="pontuacao">Pontuação: 0</div>
-                    <button id="toggle-agente-info" class="toggle-button">Mostrar/Ocultar Detalhes do Agente</button>
+                    <button id="toggle-agente-info" class="toggle-button">Mostrar/Ocultar Detalhes do Agente 3</button>
                 </div>
 
                 <div id="tabela-pontuacoes" class="score-table">
@@ -55,15 +67,6 @@
                 </div>
             </div>
 
-            <div class="right-panel">
-                <div id="agente-info" class="agent-info">
-                    <h3>Caminho do Melhor Agente da Versão 3</h3>
-                    <div id="agente-table-container" class="agent-table-container"></div>
-                    <div id="evolucao-container" class="evolution-container"></div>
-                </div>
-            </div>
-        </div>
-
         <div id="action-log">
             <h3>Registro de Ações durante Execução</h3>
             <div class="table-container">
@@ -73,7 +76,6 @@
                             <th>Tempo</th>
                             <th>Execução</th>
                             <th>Ação</th>
-                            <th>Detalhes</th>
                         </tr>
                     </thead>
                     <tbody id="action-log-body">
@@ -82,6 +84,15 @@
                 </table>
             </div>
         </div>
+
+        <div class="right-panel">
+            <div id="agente-info" class="agent-info">
+                <h3>Caminho do Melhor Agente da Versão 3</h3>
+                <div id="agente-table-container" class="agent-table-container"></div>
+                <div id="evolucao-container" class="evolution-container"></div>
+            </div>
+        </div>
+    </div>
 
         <!-- Área para tabelas quando movidas para baixo da matriz -->
         <div id="tabelas-abaixo" class="tabelas-ajustadas" style="display: none;">
