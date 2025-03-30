@@ -6,8 +6,8 @@ const agente = {
     y: 0,
     movimento: true,
     pausado: false,
-    ambienteOriginal: null, // Stores the original environment
-    ambienteAtual: [], // Current environment state
+    ambienteOriginal: null,
+    ambienteAtual: [],
     intervalo: null,
     pontuacao: 0,
     codigoColetado: false,
@@ -15,13 +15,13 @@ const agente = {
     balaDisponivel: true
 };
 
-// Execution control
+// Controle de execução
 let execucoes = 0;
-const TOTAL_EXECUCOES = 3;
+const TOTAL_EXECUCOES = 20;
 let pontuacoes = [];
 
 // ==============================================
-// EXISTING FUNCTIONS (maintained as-is)
+// Funções de renderização
 // ==============================================
 
 export function renderizarAgente(x, y) {
@@ -32,42 +32,55 @@ export function renderizarAgente(x, y) {
     }
 }
 
+// ==============================================
+// Função de tiro é aleatória
+// ==============================================
+
 function atirarNoMonstro() {
-    if (!agente.balaDisponivel) return;
+    if (!agente.balaDisponivel) return; // Não pode atirar sem bala
     
-    agente.pontuacao -= 50;
-    agente.balaDisponivel = false;
-    registrarAcao('Ação', 'Atirou no monstro (-50 pontos)');
+    agente.balaDisponivel = false; // GASTA A ÚNICA BALA
+    agente.pontuacao -= 50; // Custo por atirar
+    registrarAcao('Ação', 'Atirou (-50 pontos) ÚNICA bala usada!');
+
+    // 50% de chance de acertar
+    const acertou = Math.random() < 0.5;
     
-    const direcoes = [[-1, 0], [1, 0], [0, -1], [0, 1]];
-    for (let [dx, dy] of direcoes) {
-        const nx = agente.x + dx;
-        const ny = agente.y + dy;
-        
-        if (nx >= 0 && nx < agente.ambienteAtual.length && 
-            ny >= 0 && ny < agente.ambienteAtual[0].length) {
-            if (agente.ambienteAtual[nx][ny].includes('M')) {
-                agente.ambienteAtual[nx][ny] = agente.ambienteAtual[nx][ny].replace('M', '');
-                agente.pontuacao += 1000;
-                registrarAcao('Sucesso', 'Máquina destruída (+1000 pontos)');
+    if (acertou) {
+        const direcoes = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+        for (let [dx, dy] of direcoes) {
+            const nx = agente.x + dx;
+            const ny = agente.y + dy;
+            
+            if (nx >= 0 && nx < agente.ambienteAtual.length && 
+                ny >= 0 && ny < agente.ambienteAtual[0].length) {
+                if (agente.ambienteAtual[nx][ny].includes('M')) {
+                    agente.ambienteAtual[nx][ny] = agente.ambienteAtual[nx][ny].replace('M', '');
+                    agente.pontuacao += 1000;
+                    registrarAcao('Sucesso', 'Máquina destruída (+1000 pontos)');
+                    
+                    // Efeito visual
+                    const celula = document.querySelector(`.cell[data-x="${nx}"][data-y="${ny}"]`);
+                    if (celula) celula.classList.add('maquina-destruida');
+                }
             }
         }
+    } else {
+        registrarAcao('Tiro', 'O tiro falhou!');
     }
-    
+
     atualizarPontuacao();
 }
 
 // ==============================================
-// MODIFIED FUNCTIONS
+// Controle do jogo
 // ==============================================
 
 export function iniciarJogo(ambiente) {
-    // Store original environment on first run
     if (execucoes === 0) {
         agente.ambienteOriginal = clonarAmbiente(ambiente);
-        pontuacoes = []; // Reset scores for new game
+        pontuacoes = [];
     }
-
     iniciarNovaExecucao();
 }
 
@@ -80,18 +93,18 @@ function iniciarNovaExecucao() {
     execucoes++;
     registrarAcao('Execução', `Iniciando execução ${execucoes}/${TOTAL_EXECUCOES}`);
 
-    // Reset agent state
+    // Reset do estado do agente
     agente.ambienteAtual = clonarAmbiente(agente.ambienteOriginal);
     agente.x = 0;
     agente.y = 0;
     agente.pontuacao = 0;
     agente.codigoColetado = false;
     agente.jogoAtivo = true;
-    agente.balaDisponivel = true;
+    agente.balaDisponivel = true; // Começa com uma bala
     agente.movimento = true;
     agente.pausado = false;
 
-    // Render initial state
+    // Renderização inicial
     imprimirMatriz(agente.ambienteAtual, [{
         x: agente.x,
         y: agente.y,
@@ -102,6 +115,10 @@ function iniciarNovaExecucao() {
     iniciarMovimentoAleatorio();
     atualizarPontuacao();
 }
+
+// ==============================================
+// Movimento e lógica do jogo
+// ==============================================
 
 function moverAleatorio() {
     if (!agente.movimento || agente.pausado || !agente.jogoAtivo) return;
@@ -119,7 +136,7 @@ function moverAleatorio() {
         case 'right': novoY = Math.min(agente.ambienteAtual[0].length - 1, agente.y + 1); break;
     }
 
-    // Update agent position
+    // Atualiza posição do agente
     const celulaAnterior = document.querySelector(`.cell[data-x="${agente.x}"][data-y="${agente.y}"]`);
     if (celulaAnterior) {
         celulaAnterior.classList.remove('agente');
@@ -131,14 +148,35 @@ function moverAleatorio() {
     agente.y = novoY;
     registrarAcao('Movimento', `Para (${novoX}, ${novoY})`);
 
-    // Check cell content
+    // Verifica conteúdo da célula
     const conteudoCelula = agente.ambienteAtual[novoX][novoY];
     if (conteudoCelula.includes('E')) {
         agente.pontuacao -= 10;
         registrarAcao('Percepção', 'Escombros encontrados (-10 pontos)');
     }
     if (conteudoCelula.includes('M')) {
-        finalizarExecucao('Máquina assassina encontrada');
+        agente.pontuacao -= 2000;
+        registrarAcao('Fim de Jogo', 'Máquina assassina encontrada (-2000 pontos)');
+        
+        // Efeito visual
+        const celulaMaquina = document.querySelector(`.cell[data-x="${novoX}"][data-y="${novoY}"]`);
+        if (celulaMaquina) {
+            celulaMaquina.classList.add('maquina-ativa');
+            setTimeout(() => celulaMaquina.classList.remove('maquina-ativa'), 1000);
+        }
+        
+        // Finaliza execução
+        clearInterval(agente.intervalo);
+        agente.jogoAtivo = false;
+        
+        imprimirMatriz(agente.ambienteAtual, [{
+            x: novoX,
+            y: novoY,
+            tipo: 'agente',
+            classe: 'agente-destruido'
+        }]);
+        
+        finalizarExecucao('Destruído por máquina assassina');
         return;
     }
     if (conteudoCelula.includes('C') && !agente.codigoColetado) {
@@ -151,12 +189,12 @@ function moverAleatorio() {
         return;
     }
     if (conteudoCelula.includes('R') && agente.balaDisponivel) {
-        atirarNoMonstro();
+        atirarNoMonstro(); // só atira se tiver bala
     }
 
     atualizarPontuacao();
     
-    // Render updated state
+    // Renderiza nova posição
     imprimirMatriz(agente.ambienteAtual, [{
         x: agente.x,
         y: agente.y,
@@ -166,41 +204,41 @@ function moverAleatorio() {
 }
 
 // ==============================================
-// HELPER FUNCTIONS (maintained as-is)
+// Funções auxiliares
 // ==============================================
 
 function iniciarMovimentoAleatorio() {
     if (agente.intervalo) clearInterval(agente.intervalo);
-    agente.intervalo = setInterval(moverAleatorio, 500);
+    agente.intervalo = setInterval(moverAleatorio, 0.2);
 }
 
 function atualizarPontuacao() {
     const elementoPontuacao = document.getElementById('pontuacao');
     if (elementoPontuacao) {
-        elementoPontuacao.textContent = `Pontuação: ${agente.pontuacao} [Execução ${execucoes}/${TOTAL_EXECUCOES}]`;
+        const balaStatus = agente.balaDisponivel ? '[BALA ✔]' : '[BALA ✖]';
+        elementoPontuacao.textContent = `Pontuação: ${agente.pontuacao} ${balaStatus} [Execução ${execucoes}/${TOTAL_EXECUCOES}]`;
     }
 }
 
 function finalizarExecucao(mensagem) {
-    agente.jogoAtivo = false;
     clearInterval(agente.intervalo);
+    agente.jogoAtivo = false;
+    agente.movimento = false;
     
-    // Store score
     pontuacoes.push(agente.pontuacao);
     adicionarPontuacao(execucoes, agente.pontuacao);
     
     registrarAcao('Resultado', `${mensagem} Pontuação: ${agente.pontuacao}`);
-
-    // Start next execution or finish
+    
     if (execucoes < TOTAL_EXECUCOES) {
-        setTimeout(iniciarNovaExecucao, 1500); // Delay before next run
+        setTimeout(iniciarNovaExecucao, 2000);
     } else {
         registrarAcao('Relatório', `Pontuações finais: ${pontuacoes.join(', ')}`);
     }
 }
 
 // ==============================================
-// EXPORTED OBJECT (maintained as-is)
+// Exportação
 // ==============================================
 
 export default {
