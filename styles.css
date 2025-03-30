@@ -1,163 +1,204 @@
-/* Resetando margens e paddings */
+/* ================================================== */
+/* RESET E CONFIGURAÇÕES GERAIS */
+/* ================================================== */
+
+/* Reset básico para remover margens e paddings padrão de todos os elementos */
+/* e definir box-sizing como border-box para facilitar dimensionamento */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilos gerais do corpo da página com tema futurista/terminal */
 body {
-    font-family: 'Courier New', monospace;
-    background-color: #0a0a12;
-    color: #00ff41;
-    padding: 20px;
+    font-family: 'Courier New', monospace; /* Fonte estilo terminal */
+    background-color: #0a0a12; /* Cor de fundo escura */
+    color: #00ff41; /* Cor do texto - verde neon */
+    padding: 20px; /* Espaçamento interno */
+    /* Gradientes radiais para efeito de luz neon */
     background-image: 
         radial-gradient(circle at 10% 20%, rgba(0, 255, 65, 0.05) 0%, transparent 20%),
         radial-gradient(circle at 90% 80%, rgba(0, 255, 65, 0.05) 0%, transparent 20%);
-    line-height: 1.6;
+    line-height: 1.6; /* Espaçamento entre linhas */
 }
 
+/* Container principal que centraliza e limita o conteúdo */
 .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    border: 1px solid #00ff41;
-    border-radius: 5px;
-    padding: 20px;
-    background-color: rgba(10, 10, 18, 0.9);
-    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2);
+    max-width: 1400px; /* Largura máxima */
+    margin: 0 auto; /* Centraliza horizontalmente */
+    border: 1px solid #00ff41; /* Borda neon */
+    border-radius: 5px; /* Cantos arredondados */
+    padding: 20px; /* Espaçamento interno */
+    background-color: rgba(10, 10, 18, 0.9); /* Fundo semi-transparente */
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.2); /* Sombra neon */
 }
 
+/* ================================================== */
+/* TIPOGRAFIA E CABEÇALHOS */
+/* ================================================== */
+
+/* Estilo para o título principal */
 h1 {
-    margin-bottom: 20px;
-    font-size: 2.5rem;
-    color: #00ff41;
-    text-align: center;
-    text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
-    letter-spacing: 2px;
+    margin-bottom: 20px; /* Espaçamento inferior */
+    font-size: 2.5rem; /* Tamanho grande */
+    color: #00ff41; /* Cor neon */
+    text-align: center; /* Centralizado */
+    text-shadow: 0 0 10px rgba(0, 255, 65, 0.5); /* Sombra de texto glow */
+    letter-spacing: 2px; /* Espaçamento entre letras */
 }
 
+/* ================================================== */
+/* CONTROLES E FORMULÁRIOS */
+/* ================================================== */
+
+/* Área de controles do jogo */
 .controls {
-    background-color: #121220;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
-    margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    border: 1px solid #00ff41;
+    background-color: #121220; /* Fundo escuro */
+    padding: 15px; /* Espaçamento interno */
+    border-radius: 8px; /* Cantos arredondados */
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.3); /* Sombra glow */
+    margin-bottom: 20px; /* Espaçamento inferior */
+    display: flex; /* Layout flexível */
+    flex-wrap: wrap; /* Quebra de linha em telas pequenas */
+    gap: 15px; /* Espaço entre itens */
+    justify-content: center; /* Centraliza itens */
+    border: 1px solid #00ff41; /* Borda neon */
 }
 
+/* Divisões dentro dos controles */
 .controls > div {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    align-items: center; /* Alinha itens verticalmente */
+    gap: 10px; /* Espaço entre itens */
 }
 
+/* Grupo de botões */
 .buttons {
     display: flex;
-    gap: 10px;
+    gap: 10px; /* Espaço entre botões */
 }
 
+/* Estilos para labels */
 label {
     font-size: 1rem;
-    color: #00ff41;
-    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
+    color: #00ff41; /* Cor neon */
+    text-shadow: 0 0 5px rgba(0, 255, 65, 0.5); /* Sombra glow */
 }
 
+/* Estilos para selects e inputs */
 select, input {
-    padding: 8px 12px;
-    border-radius: 4px;
-    border: 1px solid #00ff41;
-    background-color: #121220;
-    color: #00ff41;
-    font-family: 'Courier New', monospace;
+    padding: 8px 12px; /* Espaçamento interno */
+    border-radius: 4px; /* Cantos arredondados */
+    border: 1px solid #00ff41; /* Borda neon */
+    background-color: #121220; /* Fundo escuro */
+    color: #00ff41; /* Texto neon */
+    font-family: 'Courier New', monospace; /* Fonte estilo terminal */
 }
 
+/* Estilo quando select ou input está em foco */
 select:focus, input:focus {
-    outline: none;
-    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+    outline: none; /* Remove contorno padrão */
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5); /* Efeito glow */
 }
 
+/* Estilos para botões */
 button {
     padding: 10px 15px;
     font-size: 1rem;
     border-radius: 5px;
-    background-color: #003b00;
-    color: #00ff41;
-    border: 1px solid #00ff41;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: 'Courier New', monospace;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    background-color: #003b00; /* Verde escuro */
+    color: #00ff41; /* Texto neon */
+    border: 1px solid #00ff41; /* Borda neon */
+    cursor: pointer; /* Cursor pointer */
+    transition: all 0.3s; /* Transição suave */
+    font-family: 'Courier New', monospace; /* Fonte terminal */
+    text-transform: uppercase; /* Texto em maiúsculas */
+    letter-spacing: 1px; /* Espaçamento entre letras */
 }
 
+/* Efeito hover para botões */
 button:hover {
-    background-color: #006600;
-    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+    background-color: #006600; /* Verde mais claro */
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5); /* Efeito glow */
 }
 
+/* ================================================== */
+/* LAYOUT DO JOGO */
+/* ================================================== */
+
+/* Área principal do jogo */
 .game-area {
     display: flex;
-    gap: 30px;
-    flex-wrap: wrap;
+    gap: 30px; /* Espaço entre painéis */
+    flex-wrap: wrap; /* Quebra de linha em telas pequenas */
 }
 
+/* Painel esquerdo (menor) */
 .left-panel {
-    flex: 1;
-    min-width: 350px;
+    flex: 1; /* Cresce para preencher espaço */
+    min-width: 350px; /* Largura mínima */
 }
 
+/* Painel direito (maior) */
 .right-panel {
-    flex: 2;
-    min-width: 500px;
+    flex: 2; /* Ocupa o dobro do espaço do left-panel */
+    min-width: 500px; /* Largura mínima */
 }
 
+/* Container da matriz do jogo */
 .matriz-container {
-    position: relative;
+    position: relative; /* Permite posicionamento absoluto de filhos */
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 25px; /* Espaço para o botão toggle */
 }
 
+/* Botão para mostrar/ocultar elementos */
 .toggle-button {
     position: absolute;
     bottom: 0;
     width: auto;
     max-width: 100%;
     padding: 10px 20px;
-    margin-top: 15px;
+    margin-top: 5px;
     background-color: #003b00;
     color: #00ff41;
     border: 1px solid #00ff41;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s;
-    white-space: nowrap;
-    z-index: 10;
+    white-space: nowrap; /* Impede quebra de linha */
+    z-index: 10; /* Garante que fique acima de outros elementos */
     text-transform: uppercase;
 }
 
+/* Efeito hover para o toggle button */
 .toggle-button:hover {
     background-color: #006600;
     box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
 }
 
+/* Ajuste para toggle button em matriz grande */
 .matriz-grande-container .toggle-button {
     position: relative;
     margin-top: 20px;
     width: 100%;
 }
 
+/* ================================================== */
+/* MATRIZ DO JOGO E CÉLULAS */
+/* ================================================== */
+
+/* Grid que representa a matriz do jogo */
 .matriz {
     display: grid;
-    grid-template-columns: repeat(5, 50px);
+    grid-template-columns: repeat(5, 50px); /* 5 colunas de 50px */
     justify-content: center;
     margin: 20px auto;
-    gap: 2px;
+    gap: 2px; /* Espaço entre células */
     background-color: #121220;
     padding: 10px;
     border-radius: 8px;
@@ -165,6 +206,7 @@ button:hover {
     border: 1px solid #00ff41;
 }
 
+/* Estilo das células individuais da matriz */
 .cell {
     width: 50px;
     height: 50px;
@@ -181,25 +223,29 @@ button:hover {
     transition: none !important;
 }
 
+/* Célula com agente */
 .cell.agente {
     background-color: #003b00;
     border: 2px solid #00ff41;
     transition: all 0.3s ease;
 }
 
+/* Célula com agente ativo (efeito especial) */
 .cell.agente-ativo {
     position: relative;
     border: 3px solid #00ff41 !important;
     box-shadow: 0 0 15px #00ff41;
-    animation: pulse 1.5s infinite;
+    animation: pulse 1.5s infinite; /* Animação de pulsar */
 }
 
+/* Animação de pulsar para o agente ativo */
 @keyframes pulse {
     0% { box-shadow: 0 0 5px #00ff41; }
     50% { box-shadow: 0 0 20px #00ff41; }
     100% { box-shadow: 0 0 5px #00ff41; }
 }
 
+/* Imagem do agente */
 .img-agente {
     position: absolute;
     width: 80%;
@@ -213,6 +259,7 @@ button:hover {
     opacity: 1 !important;
 }
 
+/* Imagens dentro das células */
 .cell img {
     width: 100%;
     height: 90%;
@@ -222,19 +269,21 @@ button:hover {
     left: 0;
 }
 
+/* Estilo para exibição de pontuação */
 #pontuacao {
     font-size: 1.2rem;
     font-weight: bold;
     text-align: center;
-    margin: 10px 0;
+    margin: 20px 0;
     color: #00ff41;
     text-shadow: 0 0 5px rgba(0, 255, 65, 0.5);
 }
 
-/* ==================== */
-/* ESTILOS DAS TABELAS - VERSÃO OTIMIZADA */
-/* ==================== */
+/* ================================================== */
+/* ESTILOS DAS TABELAS */
+/* ================================================== */
 
+/* Tabelas de score, info do agente e log de ações */
 .score-table, .agent-info, #action-log {
     background-color: #121220;
     padding: 20px;
@@ -244,9 +293,10 @@ button:hover {
     margin-bottom: 20px;
 }
 
+/* Containers de tabela com scroll */
 .table-container, .agent-table-container {
     max-height: 800px;
-    overflow-y: auto;
+    overflow-y: auto; /* Scroll vertical quando necessário */
     overflow-x: visible;
     width: 100%;
     margin-top: 15px;
@@ -255,49 +305,56 @@ button:hover {
     display: block;
 }
 
+/* Estilos básicos para tabelas */
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse; /* Remove espaços entre células */
     font-size: 15px;
     table-layout: auto;
 }
 
+/* Cabeçalhos e células da tabela */
 th, td {
     padding: 12px 20px;
     text-align: left;
-    border-bottom: 1px solid #00ff41;
+    border-bottom: 1px solid #00ff41; /* Linhas divisórias */
     white-space: normal;
     word-wrap: break-word;
     color: #00ff41;
 }
 
+/* Estilo especial para cabeçalhos */
 th {
     background-color: #003b00;
     color: #00ff41;
-    position: sticky;
+    position: sticky; /* Cabeçalho fixo durante scroll */
     top: 0;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
+/* Linhas alternadas para melhor legibilidade */
 tr:nth-child(even) {
     background-color: rgba(0, 255, 65, 0.05);
 }
 
+/* Efeito hover nas linhas */
 tr:hover {
     background-color: rgba(0, 255, 65, 0.1);
 }
 
-/* ==================== */
+/* ================================================== */
 /* ESTILOS PARA MATRIZ GRANDE */
-/* ==================== */
+/* ================================================== */
 
+/* Matriz em tamanho grande (escalonada) */
 .matriz-grande {
-    transform: scale(0.8);
+    transform: scale(0.8); /* Reduz tamanho para 80% */
     transform-origin: top center;
     margin: 10px auto;
 }
 
+/* Containers quando a matriz está em tamanho grande */
 .container-com-matriz-grande {
     flex-direction: column;
 }
@@ -306,16 +363,17 @@ tr:hover {
     flex-direction: column;
 }
 
-/* Container para tabelas abaixo da matriz grande */
+/* Layout ajustado para tabelas quando matriz está grande */
 .tabelas-ajustadas {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
     gap: 50px;
     width: 100%;
     margin-top: 20px;
     margin-bottom: 15px;
 }
 
+/* Ajustes específicos para tabelas no modo matriz grande */
 .tabelas-ajustadas .score-table,
 .tabelas-ajustadas #action-log {
     margin-bottom: 0;
@@ -327,7 +385,7 @@ tr:hover {
 .tabelas-ajustadas .agent-info {
     margin-bottom: 0;
     height: 800px;
-    width: 700px;
+    width: 600px;
     margin: auto;
 }
 
@@ -336,10 +394,11 @@ tr:hover {
     max-height: 300px;
 }
 
-/* ==================== */
-/* OUTROS ESTILOS */
-/* ==================== */
+/* ================================================== */
+/* COMPONENTES ESPECÍFICOS */
+/* ================================================== */
 
+/* Controles de animação */
 .animacao-controles {
     display: flex;
     gap: 10px;
@@ -356,12 +415,13 @@ tr:hover {
     background-color: #006600;
 }
 
+/* Resumo final do jogo */
 .resumo-final {
     margin-top: 20px;
     padding: 20px;
     background-color: rgba(18, 18, 32, 0.8);
     border-radius: 5px;
-    border-left: 4px solid #00ff41;
+    border-left: 4px solid #00ff41; /* Destaque na borda esquerda */
 }
 
 .resumo-final h4 {
@@ -377,6 +437,7 @@ tr:hover {
     color: #00ff41;
 }
 
+/* Container para evolução do agente */
 .evolution-container {
     margin-top: 20px;
     max-height: 300px;
@@ -392,6 +453,7 @@ tr:hover {
     margin-top: 10px;
 }
 
+/* Efeito de terminal (cursor piscando) */
 .terminal-effect {
     position: relative;
 }
@@ -403,22 +465,25 @@ tr:hover {
     right: -10px;
 }
 
+/* Animação do cursor piscando */
 @keyframes blink {
     from, to { opacity: 0; }
     50% { opacity: 1; }
 }
 
+/* Animação de alerta (pulsar) */
 @keyframes alert-pulse {
     0% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.3); }
     50% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.5); }
     100% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.3); }
 }
 
-/* ==================== */
-/* RESPONSIVIDADE */
-/* ==================== */
+/* ================================================== */
+/* RESPONSIVIDADE - AJUSTES PARA TELAS PEQUENAS */
+/* ================================================== */
 
 @media (max-width: 768px) {
+    /* Layout em coluna única para telas pequenas */
     .game-area {
         flex-direction: column;
     }
@@ -428,6 +493,7 @@ tr:hover {
         min-width: auto;
     }
     
+    /* Controles empilhados verticalmente */
     .controls {
         flex-direction: column;
         align-items: stretch;
@@ -442,10 +508,12 @@ tr:hover {
         justify-content: center;
     }
 
+    /* Tabelas em coluna única */
     .tabelas-ajustadas {
         grid-template-columns: 1fr;
     }
     
+    /* Células da tabela com menos padding */
     th, td {
         padding: 8px 12px;
         white-space: normal;
