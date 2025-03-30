@@ -209,7 +209,7 @@ function moverAleatorio() {
 
 function iniciarMovimentoAleatorio() {
     if (agente.intervalo) clearInterval(agente.intervalo);
-    agente.intervalo = setInterval(moverAleatorio, 0.2);
+    agente.intervalo = setInterval(moverAleatorio, 200);
 }
 
 function atualizarPontuacao() {
