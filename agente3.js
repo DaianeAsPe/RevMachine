@@ -15,7 +15,7 @@ const agente3 = {
     tamanhoPopulacao: 50,
     taxaMutacao: 0.05,
     numeroGeracoes: 30,
-    tempoEsperaAnimacao: 500, // ms entre passos
+    tempoEsperaAnimacao: 100, // ms entre passos
 
     iniciarJogo: function(ambiente) {
         registrarAcao('Algoritmo Genético', 'Iniciando evolução...');
