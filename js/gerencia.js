@@ -1,9 +1,10 @@
-import { gerarAmbiente, imprimirMatriz } from './ambiente.js';
-import agente1 from './agente1.js';
-import agente2 from './agente2.js';
-import agente3 from './agente3.js';
+// Importando dos outros arquivos js
+import { gerarAmbiente, imprimirMatriz } from '../js/ambiente.js';
+import agente1 from '../js/agente1.js';
+import agente2 from '../js/agente2.js';
+import agente3 from '../js/agente3.js';
 
-// Função para ajustar o layout baseado no tamanho da matriz
+// Função para ajustar a tela de jogo baseada no tamanho da matriz
 function ajustarLayoutParaMatriz(tamanho) {
     const gameArea = document.getElementById('gameArea');
     const matrizContainer = document.getElementById('matrizContainer');
@@ -16,7 +17,7 @@ function ajustarLayoutParaMatriz(tamanho) {
     const actionLog = document.getElementById('action-log');
 
     matrizContainer.appendChild(toggleButton);
-
+    // A matriz a partir de 10 é considerada grande
     if (tamanho > 9) {
         gameArea.classList.add('matriz-grande-layout');
         matrizContainer.classList.add('matriz-grande-container');
@@ -70,6 +71,7 @@ let agenteSelecionado = null;
 let ambiente = null;
 let ultimaExecucao = 0;
 
+// As ações da tabela action-log-body são adicinadas dinamicamente por aqui 
 export function registrarAcao(acao, detalhes = '') {
     const actionLog = document.getElementById('action-log-body');
     const novaLinha = document.createElement('tr');
@@ -155,6 +157,7 @@ document.getElementById('toggle-agente-info').addEventListener('click', function
     infoDiv.style.display = infoDiv.style.display === 'none' ? 'block' : 'none';
 });
 
+// A pontuação ao longo das execuções são feitas por aqui
 export function adicionarPontuacao(execucao, pontuacao) {
     const corpoTabela = document.getElementById('corpo-tabela');
     const novaLinha = document.createElement('tr');

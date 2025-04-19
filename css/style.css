@@ -344,7 +344,7 @@ tr:hover {
 }
 
 /* ================================================== */
-/* ESTILOS PARA MATRIZ GRANDE */
+/* ESTILOS PARA MATRIZ GRANDE (a partir do tam 10*/
 /* ================================================== */
 
 /* Matriz em tamanho grande (escalonada) */
@@ -373,7 +373,10 @@ tr:hover {
     margin-bottom: 15px;
 }
 
+/* ================================================== */
 /* Ajustes específicos para tabelas no modo matriz grande */
+/* ================================================== */
+
 .tabelas-ajustadas .score-table,
 .tabelas-ajustadas #action-log {
     margin-bottom: 0;

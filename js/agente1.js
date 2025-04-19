@@ -1,6 +1,8 @@
-import { clonarAmbiente, imprimirMatriz } from './ambiente.js';
-import { registrarAcao, adicionarPontuacao } from './gerencia.js';
+// Importando dos outros arquivos js
+import { clonarAmbiente, imprimirMatriz } from '../js/ambiente.js';
+import { registrarAcao, adicionarPontuacao } from '../js/gerencia.js';
 
+// Criando o agente
 const agente = {
     x: 0,
     y: 0,
@@ -15,37 +17,32 @@ const agente = {
     balaDisponivel: true
 };
 
-// Controle de execução
+// Controle daa quantidade de execuções
 let execucoes = 0;
-const TOTAL_EXECUCOES = 20;
+const TOTAL_EXECUCOES = 3;
 let pontuacoes = [];
 
-// ==============================================
-// Funções de renderização
-// ==============================================
-
+// Função de renderização da imagem do agente
 export function renderizarAgente(x, y) {
     const celula = document.querySelector(`.cell[data-x="${x}"][data-y="${y}"]`);
     if (celula) {
-        celula.innerHTML += '<img src="hacker.png" alt="Agente Hacker">';
+        celula.innerHTML += '<img src="../images/hacker.png" alt="Agente Hacker">';
         celula.classList.add('agente');
     }
 }
 
-// ==============================================
-// Função de tiro é aleatória
-// ==============================================
-
+// Função de tiro aleatório
 function atirarNoMonstro() {
-    if (!agente.balaDisponivel) return; // Não pode atirar sem bala
+    if (!agente.balaDisponivel) return; // Verifica se a bala está disponível
     
-    agente.balaDisponivel = false; // GASTA A ÚNICA BALA
-    agente.pontuacao -= 50; // Custo por atirar
+    agente.balaDisponivel = false; // Gasta a única bala e passa a não poder atirar novamente
+    agente.pontuacao -= 50; // Custo de 50 por atirar
     registrarAcao('Ação', 'Atirou (-50 pontos) ÚNICA bala usada!');
 
     // 50% de chance de acertar
     const acertou = Math.random() < 0.5;
     
+    // Verificação de acerto para atualizar o ambiente
     if (acertou) {
         const direcoes = [[-1, 0], [1, 0], [0, -1], [0, 1]];
         for (let [dx, dy] of direcoes) {
@@ -72,10 +69,8 @@ function atirarNoMonstro() {
     atualizarPontuacao();
 }
 
-// ==============================================
-// Controle do jogo
-// ==============================================
 
+// Controle do jogo
 export function iniciarJogo(ambiente) {
     if (execucoes === 0) {
         agente.ambienteOriginal = clonarAmbiente(ambiente);
@@ -84,6 +79,7 @@ export function iniciarJogo(ambiente) {
     iniciarNovaExecucao();
 }
 
+// Inicia uma nova execução se ainda não atingiu o número de execuções definido
 function iniciarNovaExecucao() {
     if (execucoes >= TOTAL_EXECUCOES) {
         registrarAcao('Final', `Todas as ${TOTAL_EXECUCOES} execuções concluídas`);
@@ -93,14 +89,14 @@ function iniciarNovaExecucao() {
     execucoes++;
     registrarAcao('Execução', `Iniciando execução ${execucoes}/${TOTAL_EXECUCOES}`);
 
-    // Reset do estado do agente
+    // Reseta o estado do agente e clona o ambiente original
     agente.ambienteAtual = clonarAmbiente(agente.ambienteOriginal);
     agente.x = 0;
     agente.y = 0;
     agente.pontuacao = 0;
     agente.codigoColetado = false;
     agente.jogoAtivo = true;
-    agente.balaDisponivel = true; // Começa com uma bala
+    agente.balaDisponivel = true; // Começa com uma bala novamente
     agente.movimento = true;
     agente.pausado = false;
 
@@ -116,10 +112,7 @@ function iniciarNovaExecucao() {
     atualizarPontuacao();
 }
 
-// ==============================================
-// Movimento e lógica do jogo
-// ==============================================
-
+// Movimento aleatório do agente
 function moverAleatorio() {
     if (!agente.movimento || agente.pausado || !agente.jogoAtivo) return;
 
@@ -148,7 +141,7 @@ function moverAleatorio() {
     agente.y = novoY;
     registrarAcao('Movimento', `Para (${novoX}, ${novoY})`);
 
-    // Verifica conteúdo da célula
+    // Verifica conteúdo da célula em que o agente está
     const conteudoCelula = agente.ambienteAtual[novoX][novoY];
     if (conteudoCelula.includes('E')) {
         agente.pontuacao -= 10;
@@ -158,7 +151,6 @@ function moverAleatorio() {
         agente.pontuacao -= 2000;
         registrarAcao('Fim de Jogo', 'Máquina assassina encontrada (-2000 pontos)');
         
-        // Efeito visual
         const celulaMaquina = document.querySelector(`.cell[data-x="${novoX}"][data-y="${novoY}"]`);
         if (celulaMaquina) {
             celulaMaquina.classList.add('maquina-ativa');
@@ -203,13 +195,13 @@ function moverAleatorio() {
     }]);
 }
 
-// ==============================================
+//===============================================
 // Funções auxiliares
-// ==============================================
+//===============================================
 
 function iniciarMovimentoAleatorio() {
     if (agente.intervalo) clearInterval(agente.intervalo);
-    agente.intervalo = setInterval(moverAleatorio, 200);
+    agente.intervalo = setInterval(moverAleatorio, 200); // Velocidade de uma execução para outra
 }
 
 function atualizarPontuacao() {

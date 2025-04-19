@@ -45,7 +45,7 @@ export function gerarAmbiente(n, qtdEscombrosPercent, qtdMaquinas, qtdCodigos) {
     for (let i = 0; i < qtdEscombros; i++) {
         let [x, y] = gerarPosicaoValida(matriz, n, proibidos);
         matriz[x][y] = 'E';
-        adicionarEfeitoAdjacente(matriz, x, y, 'P'); // Poeira
+        adicionarEfeitoAdjacente(matriz, x, y, 'P'); // Adicionando a Poeira (P) nas casas adjacentes
         proibidos.push([x, y]);
     }
 
@@ -53,7 +53,7 @@ export function gerarAmbiente(n, qtdEscombrosPercent, qtdMaquinas, qtdCodigos) {
     for (let i = 0; i < qtdMaquinas; i++) {
         let [x, y] = gerarPosicaoValida(matriz, n, proibidos);
         matriz[x][y] = 'M';
-        adicionarEfeitoAdjacente(matriz, x, y, 'R'); // Ruído
+        adicionarEfeitoAdjacente(matriz, x, y, 'R'); // Adicionando o Ruído (R) nas casas adjacentes
         proibidos.push([x, y]);
     }
 
@@ -61,7 +61,7 @@ export function gerarAmbiente(n, qtdEscombrosPercent, qtdMaquinas, qtdCodigos) {
     for (let i = 0; i < qtdCodigos; i++) {
         let [x, y] = gerarPosicaoValida(matriz, n, proibidos);
         matriz[x][y] = 'C';
-        matriz[x][y] += 'S'; // Sinal na mesma posição do Código
+        matriz[x][y] += 'S'; // Adicionando o Sinal (S) na mesma posição do Código (C)
         proibidos.push([x, y]);
     }
 
@@ -91,29 +91,29 @@ export function imprimirMatriz(matriz, posicoesEspeciais = []) {
 
             // Adiciona as imagens conforme o conteúdo da célula
             if (conteudo.includes('M')) {
-                divCell.innerHTML += '<img src="roborev.png" alt="Máquina Assassina" class="img-elemento">';
+                divCell.innerHTML += '<img src="../images/roborev.png" alt="Máquina Assassina" class="img-elemento">';
             }
             if (conteudo.includes('E')) {
-                divCell.innerHTML += '<img src="escombros.png" alt="Escombros" class="img-elemento">';
+                divCell.innerHTML += '<img src="../images/escombros.png" alt="Escombros" class="img-elemento">';
             }
             if (conteudo.includes('C')) {
-                divCell.innerHTML += '<img src="secretcode.png" alt="Código de Desativação" class="img-elemento">';
+                divCell.innerHTML += '<img src="../images/secretcode.png" alt="Código de Desativação" class="img-elemento">';
             }
             if (conteudo.includes('S')) {
-                divCell.innerHTML += '<img src="sinal.png" alt="Sinal de Rede" class="img-elemento">';
+                divCell.innerHTML += '<img src="../images/sinal.png" alt="Sinal de Rede" class="img-elemento">';
             }
             if (conteudo.includes('R')) {
-                divCell.innerHTML += '<img src="ruido.png" alt="Ruído" class="img-elemento">';
+                divCell.innerHTML += '<img src="../images/ruido.png" alt="Ruído" class="img-elemento">';
             }
             if (conteudo.includes('P')) {
-                divCell.innerHTML += '<img src="poeira.png" alt="Poeira" class="img-elemento">';
+                divCell.innerHTML += '<img src="../images/poeira.png" alt="Poeira" class="img-elemento">';
             }
 
             // Verifica se há posições especiais (como o agente)
             for (const pos of posicoesEspeciais) {
                 if (pos.x === i && pos.y === j) {
                     const imgAgente = document.createElement('img');
-                    imgAgente.src = 'hacker.png';
+                    imgAgente.src = '../images/hacker.png';
                     imgAgente.alt = 'Agente Hacker';
                     imgAgente.className = 'img-agente';
                     divCell.appendChild(imgAgente);

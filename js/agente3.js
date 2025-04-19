@@ -1,6 +1,8 @@
-import { clonarAmbiente, imprimirMatriz } from './ambiente.js';
-import { registrarAcao, adicionarPontuacao } from './gerencia.js';
+// Importando dos outros arquivos js
+import { clonarAmbiente, imprimirMatriz } from '../js/ambiente.js';
+import { registrarAcao, adicionarPontuacao } from '../js/gerencia.js';
 
+// Iniciando o agente
 const agente3 = {
     populacao: [],
     melhorIndividuo: null,
@@ -12,9 +14,9 @@ const agente3 = {
     evolucaoPorGeracao: [],
 
     // Parâmetros do algoritmo genético
-    tamanhoPopulacao: 50,
-    taxaMutacao: 0.05,
-    numeroGeracoes: 30,
+    tamanhoPopulacao: 50, // Inicia a população com 50 indivíduos
+    taxaMutacao: 0.05, // Taxa de mutação em 5% da população
+    numeroGeracoes: 30, // São 30 gerações
     tempoEsperaAnimacao: 100, // ms entre passos
 
     iniciarJogo: function(ambiente) {
@@ -394,7 +396,7 @@ const agente3 = {
         }
     },
 
-    // Exibe a evolução por geração
+    // Exibe a tabela com a evolução por geração
     exibirEvolucaoPorGeracao: function() {
         const container = document.getElementById('evolucao-container');
         if (!container) return;
