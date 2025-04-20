@@ -16,10 +16,10 @@ O TexMachine emite um sinal de ruído quando está bem próximo, o agente salvad
 
 <h2>Tela de Jogo:</h2>
 A tela de jogo foi pensada em ser como um ambiente hacker, dada a temática da história que impulsionou a criação desse jogo.
-![Tela inicial](https://github.com/DaianeAsPe/RevMachine/blob/main/ImageTelaJogo/tela1.png?raw=true)
+![Tela inicial](RevMachine/blob/main/ImageTelaJogo/tela1.png)
 
 O ambiente e visualização durante o jogo:
-![Tela em jogo](https://github.com/DaianeAsPe/RevMachine/blob/main/ImageTelaJogo/tela2.png?raw=true)
+![Tela em jogo](RevMachine/blob/main/ImageTelaJogo/tela2.png)
 
 
 <h3>Construção</h3>
