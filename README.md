@@ -22,9 +22,6 @@ Na tela inicial é possível visualizar a caixa de seleção do agente, o tamanh
 Aqui é possível ver em execução o agente 1 em um ambiente tamanho 4x4, quando a execução começa as tabelas de registro e de pontuação começam a exibir informações sobre a determinada execução:
 <img src="https://github.com/DaianeAsPe/RevMachine/blob/main/ImageTelaJogo/tela2.png?raw=true" alt="Tela em Jogo Ag.1" width="600" heigth="600">
 
-A mesma coisa acontece para o agente 2:
-<img src="https://github.com/DaianeAsPe/RevMachine/blob/main/ImageTelaJogo/tela3.png?raw=true" alt="Tela em Jogo Ag.2" width="600" heigth="600">
-
 Para o agente 3 a mudança ocorre na tabela de detalhes do agente, onde é possível visualizar as informações ao longo das gerações e ao final os detalhes do melhor agente 3 ao longo de todas as gerações:
 <img src="https://github.com/DaianeAsPe/RevMachine/blob/main/ImageTelaJogo/tela4.png?raw=true" alt="Tela em Jogo Ag.3" width="600" heigth="600">
 
