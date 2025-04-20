@@ -15,7 +15,8 @@ Para a surpresa da empresa, muitos candidataram-se, muitos jovens programadores 
 O TexMachine emite um sinal de ruído quando está bem próximo, o agente salvador conta com um notebook que capta esse sinal quando está em alta intensidade, com isso, ele pode acessar o código fonte da máquina assassina e matá-la, mas se ele errar, estará dentro do prédio sem mais nenhuma chance de proteção. O sinal só poderá ser captado uma única vez e precisa ser bem aproveitado, será que nossos voluntários estão prontos para a missão? É o que queremos descobrir. 
 
 <h2>Tela de Jogo:</h2>
-![Tela inicial](https://github.com/DaianeAsPe/Rev-Machine/blob/main/ImageTelaJogo/tela1.png?raw=true)
+
+![Tela inicial](https://github.com/DaianeAsPe/RevMachine/blob/main/ImageTelaJogo/tela1.png?raw=true)
 
 
 Construção 
