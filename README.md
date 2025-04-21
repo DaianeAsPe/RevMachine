@@ -1,3 +1,4 @@
+Para acessar o jogo, siga o link: https://rev-machine.vercel.app/
 <h1>RevMachine Game</h1>
 
 <h3>História</h3>
