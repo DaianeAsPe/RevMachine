@@ -15,8 +15,15 @@ Para a surpresa da empresa, muitos candidataram-se, muitos jovens programadores 
 O TexMachine emite um sinal de ruído quando está bem próximo, o agente salvador conta com um notebook que capta esse sinal quando está em alta intensidade, com isso, ele pode acessar o código fonte da máquina assassina e matá-la, mas se ele errar, estará dentro do prédio sem mais nenhuma chance de proteção. O sinal só poderá ser captado uma única vez e precisa ser bem aproveitado, será que nossos voluntários estão prontos para a missão? É o que queremos descobrir. 
 
 <h2>Tela de Jogo:</h2>
-A tela de jogo foi pensada em ser como um ambiente hacker, dada a temática da história que impulsionou a criação desse jogo:
-<img src="https://github.com/DaianeAsPe/RevMachine/blob/main/ImageTelaJogo/tela2.png?raw=true" alt="Tela em Jogo" width="600" heigth="600">
+A tela de jogo foi pensada em ser como um ambiente hacker, dada a temática da história que impulsionou a criação desse jogo.
+Na tela inicial é possível visualizar a caixa de seleção do agente, o tamanho da matriz e os botões de controle para iniciar e parar a execução:
+<img src="https://github.com/DaianeAsPe/RevMachine/blob/main/ImageTelaJogo/tela1.png?raw=true" alt="Tela Inicial" width="600" heigth="600">
+
+Aqui é possível ver em execução o agente 1 em um ambiente tamanho 4x4, quando a execução começa as tabelas de registro e de pontuação começam a exibir informações sobre a determinada execução:
+<img src="https://github.com/DaianeAsPe/RevMachine/blob/main/ImageTelaJogo/tela2.png?raw=true" alt="Tela em Jogo Ag.1" width="600" heigth="600">
+
+Para o agente 3 a mudança ocorre na tabela de detalhes do agente, onde é possível visualizar as informações ao longo das gerações e ao final os detalhes do melhor agente 3 ao longo de todas as gerações:
+<img src="https://github.com/DaianeAsPe/RevMachine/blob/main/ImageTelaJogo/tela4.png?raw=true" alt="Tela em Jogo Ag.3" width="600" heigth="600">
 
 
 <h3>Construção</h3>
